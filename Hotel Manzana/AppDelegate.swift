@@ -1,8 +1,7 @@
 //
 //  AppDelegate.swift
 //  Hotel Manzana
-//
-//  Created by Denis Azarkov on 4/10/23.
+//  Created by .b[u]mpagram  on 4/10/23.
 //
 
 import UIKit
