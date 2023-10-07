@@ -13,6 +13,11 @@ class AddRegistrationTVC: UITableViewController {
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     @IBOutlet var checkInDateLabel: UILabel!
     @IBOutlet var checkOutDateLabel: UILabel!
+    @IBOutlet var numberAdultsLabel: UILabel!
+    @IBOutlet var numberAdultsStepper: UIStepper!
+    @IBOutlet var numberChildrenLabel: UILabel!
+    @IBOutlet var numberChildrenStepper: UIStepper!
+    
     
     let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
     let checkoutDatePickerIndexPath = IndexPath(row: 3, section: 1)
@@ -39,8 +44,10 @@ class AddRegistrationTVC: UITableViewController {
         checkInDatePicker.minimumDate = today
         checkInDatePicker.date = today
         updateDateViews()
+        updateNumbers()
     }
 
+    
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         print("DONE PRESSED")
         print(firstNameField.text ?? "")
@@ -48,6 +55,8 @@ class AddRegistrationTVC: UITableViewController {
         print(emailField.text ?? "")
         print(checkInDatePicker.date)
         print(checkOutDatePicker.date)
+        print(Int(numberAdultsStepper.value))
+        print(Int(numberChildrenStepper.value))
     }
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
@@ -60,12 +69,20 @@ class AddRegistrationTVC: UITableViewController {
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
     }
+    @IBAction func steppersValueChanged(_ sender: UIStepper) {
+        updateNumbers()
+    }
     
     
     func updateDateViews() {
         checkOutDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: checkInDatePicker.date)  // минимальный шаг в 1 день от даты въезда
         checkInDateLabel.text = checkInDatePicker.date.formatted(date: .abbreviated, time: .omitted)
         checkOutDateLabel.text = checkOutDatePicker.date.formatted(date: .abbreviated, time: .omitted)
+    }
+    
+    func updateNumbers() {
+        numberAdultsLabel.text = "\(Int(numberAdultsStepper.value))"
+        numberChildrenLabel.text = "\(Int(numberChildrenStepper.value))"
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
