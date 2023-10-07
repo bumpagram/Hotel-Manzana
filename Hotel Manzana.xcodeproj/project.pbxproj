@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		5AB3D3982ACD911A0015B96E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3972ACD911A0015B96E /* AppDelegate.swift */; };
 		5AB3D39A2ACD911A0015B96E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3992ACD911A0015B96E /* SceneDelegate.swift */; };
-		5AB3D39C2ACD911A0015B96E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D39B2ACD911A0015B96E /* ViewController.swift */; };
 		5AB3D39F2ACD911A0015B96E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3D39D2ACD911A0015B96E /* Main.storyboard */; };
 		5AB3D3A12ACD911B0015B96E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3D3A02ACD911B0015B96E /* Assets.xcassets */; };
 		5AB3D3A42ACD911B0015B96E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3D3A22ACD911B0015B96E /* LaunchScreen.storyboard */; };
+		5AB3D3AC2ACD9ED50015B96E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3AB2ACD9ED50015B96E /* Model.swift */; };
+		5AB3D3AE2ACDAF450015B96E /* AddRegistrationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5AB3D3942ACD911A0015B96E /* Hotel Manzana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hotel Manzana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB3D3972ACD911A0015B96E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AB3D3992ACD911A0015B96E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5AB3D39B2ACD911A0015B96E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5AB3D39E2ACD911A0015B96E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AB3D3A02ACD911B0015B96E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AB3D3A32ACD911B0015B96E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AB3D3A52ACD911B0015B96E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AB3D3AB2ACD9ED50015B96E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,8 @@
 		5AB3D38B2ACD911A0015B96E = {
 			isa = PBXGroup;
 			children = (
+				5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */,
+				5AB3D3AB2ACD9ED50015B96E /* Model.swift */,
 				5AB3D3962ACD911A0015B96E /* Hotel Manzana */,
 				5AB3D3952ACD911A0015B96E /* Products */,
 			);
@@ -58,7 +62,6 @@
 			children = (
 				5AB3D3972ACD911A0015B96E /* AppDelegate.swift */,
 				5AB3D3992ACD911A0015B96E /* SceneDelegate.swift */,
-				5AB3D39B2ACD911A0015B96E /* ViewController.swift */,
 				5AB3D39D2ACD911A0015B96E /* Main.storyboard */,
 				5AB3D3A02ACD911B0015B96E /* Assets.xcassets */,
 				5AB3D3A22ACD911B0015B96E /* LaunchScreen.storyboard */,
@@ -138,7 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AB3D39C2ACD911A0015B96E /* ViewController.swift in Sources */,
+				5AB3D3AE2ACDAF450015B96E /* AddRegistrationTVC.swift in Sources */,
+				5AB3D3AC2ACD9ED50015B96E /* Model.swift in Sources */,
 				5AB3D3982ACD911A0015B96E /* AppDelegate.swift in Sources */,
 				5AB3D39A2ACD911A0015B96E /* SceneDelegate.swift in Sources */,
 			);
