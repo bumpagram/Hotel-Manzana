@@ -19,13 +19,26 @@ struct Registration {
 }
 
 
+
 struct RoomType: Equatable {
     var id: Int
     var name: String
     var shortName: String
     var price: Int
  
+    // func for protocol implementation
     static func ==(left: RoomType, right: RoomType) -> Bool {
         return left.id == right.id
     }
+    
+    static var all: [RoomType] { // массив с всеми комнатами в отеле, статик чтобы глобал константу не делать
+        return [
+        RoomType(id: 0, name: "Two queens", shortName: "2Q", price: 179),
+        RoomType(id: 1, name: "One King", shortName: "K", price: 209),
+        RoomType(id: 2, name: "Penthouse suite", shortName: "PHS", price: 309)
+        
+        ]
+    }
 }
+
+
