@@ -14,6 +14,24 @@ class AddRegistrationTVC: UITableViewController {
     @IBOutlet var checkInDateLabel: UILabel!
     @IBOutlet var checkOutDateLabel: UILabel!
     
+    let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
+    let checkoutDatePickerIndexPath = IndexPath(row: 3, section: 1)
+    let checkinLabelCellIndexPath = IndexPath(row: 0, section: 1)  // а мы тыкаем на лейбл-заголовок ячейкой выше
+    let checkOutLabelCellIndexPath = IndexPath(row: 2, section: 1)  // аналогично
+
+
+    var isCheckinDatePickerVisible: Bool = false {
+        didSet {
+            checkInDatePicker.isHidden = !isCheckinDatePickerVisible  // toggle переворот в случае изменения значения
+        }
+    }
+    
+    var isCheckoutDatePickerVisible: Bool = false {
+        didSet {
+            checkOutDatePicker.isHidden = !isCheckoutDatePickerVisible
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +51,7 @@ class AddRegistrationTVC: UITableViewController {
     }
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
+        // странно, не работает
         firstNameField.resignFirstResponder()
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
@@ -49,15 +68,46 @@ class AddRegistrationTVC: UITableViewController {
         checkOutDateLabel.text = checkOutDatePicker.date.formatted(date: .abbreviated, time: .omitted)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case checkinDatePickerIndexPath where isCheckinDatePickerVisible == false: return 0
+        case checkoutDatePickerIndexPath where isCheckoutDatePickerVisible == false : return 0
+            // добавил 2 кейса, тк я вручную размеры ячеек проставлял и авторесайз не работает
+        case checkinDatePickerIndexPath where isCheckinDatePickerVisible == true: return 217.0
+        case checkoutDatePickerIndexPath where isCheckoutDatePickerVisible == true : return 217.0
+        default: return UITableView.automaticDimension
+        }
     }
-    */
+    
+// этот метод был для автоматического ресайза ячеек, но тк я сделал руками, то он не влияет видимо
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch indexPath {
+//        case checkinLabelCellIndexPath: return 217.0
+//        case checkOutLabelCellIndexPath: return 217.0
+//        default: return UITableView.automaticDimension
+//        }
+//    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath == checkinLabelCellIndexPath && isCheckoutDatePickerVisible == false {
+            isCheckinDatePickerVisible.toggle()
+        } else if indexPath == checkOutLabelCellIndexPath && isCheckinDatePickerVisible == false {
+            isCheckoutDatePickerVisible.toggle()
+        } else if indexPath == checkinLabelCellIndexPath || indexPath == checkOutLabelCellIndexPath {
+            isCheckinDatePickerVisible.toggle()
+            isCheckoutDatePickerVisible.toggle()
+        } else {
+            return
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
 
-}
+   
+    
+    
+
+} // UITableViewController end
