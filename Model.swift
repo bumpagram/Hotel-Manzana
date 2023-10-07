@@ -34,7 +34,7 @@ struct RoomType: Equatable {
     static var all: [RoomType] { // массив с всеми комнатами в отеле, статик чтобы глобал константу не делать
         return [
         RoomType(id: 0, name: "Two queens", shortName: "2Q", price: 179),
-        RoomType(id: 1, name: "One King", shortName: "K", price: 209),
+        RoomType(id: 1, name: "One King", shortName: "1K", price: 209),
         RoomType(id: 2, name: "Penthouse suite", shortName: "PHS", price: 309)
         
         ]

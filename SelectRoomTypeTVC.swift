@@ -7,7 +7,10 @@ import UIKit
 class SelectRoomTypeTVC: UITableViewController {
     
     var currentlySelectedRoomType: RoomType?
+    // WEAK   Since another class will implement the protocol, you'll need to define a property to hold the reference to the implementing instance:
+    var delegatee: SelectRoomTypeTVCDelegate?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -48,10 +51,11 @@ class SelectRoomTypeTVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let tappedCell = RoomType.all[indexPath.row]
         currentlySelectedRoomType = tappedCell
+        delegatee?.selectRoomTypeTableViewController(self, didSelect: tappedCell)  //референс в проперти, из него в протокол, из протокола в метод
+        
         tableView.reloadData()
     }
 
-    
 
     /*
     // MARK: - Navigation
@@ -62,4 +66,11 @@ class SelectRoomTypeTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+} // TableViewController end
+
+
+
+protocol SelectRoomTypeTVCDelegate : AnyObject {
+    func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTVC, didSelect roomType: RoomType)
+    // кастомный протокол и метод тоже
 }

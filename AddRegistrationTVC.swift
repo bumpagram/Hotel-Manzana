@@ -4,8 +4,8 @@
 //
 import UIKit
 
-class AddRegistrationTVC: UITableViewController {
-
+class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
+    
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
     @IBOutlet var emailField: UITextField!
@@ -18,6 +18,7 @@ class AddRegistrationTVC: UITableViewController {
     @IBOutlet var numberChildrenLabel: UILabel!
     @IBOutlet var numberChildrenStepper: UIStepper!
     @IBOutlet var wifiSwitch: UISwitch!
+    @IBOutlet var roomTypeLabel: UILabel!
     
     
     let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
@@ -38,6 +39,8 @@ class AddRegistrationTVC: UITableViewController {
         }
     }
     
+    var roomType: RoomType?  // property to hold selected room type in another window
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +49,9 @@ class AddRegistrationTVC: UITableViewController {
         checkInDatePicker.date = today
         updateDateViews()
         updateNumbers()
+        updateRooms()
     }
-
+    
     
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         print("DONE PRESSED")
@@ -59,6 +63,8 @@ class AddRegistrationTVC: UITableViewController {
         print(Int(numberAdultsStepper.value))
         print(Int(numberChildrenStepper.value))
         print(wifiSwitch.isOn)
+        let roomChoice = roomType?.name ?? "Not set"
+        print(roomChoice)
     }
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
@@ -78,6 +84,14 @@ class AddRegistrationTVC: UITableViewController {
         // implement чуть позже
     }
     
+    @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTVC? {
+        let selectRoomController = SelectRoomTypeTVC(coder: coder)  // инициализируем ViewController и кладем его в константу
+        selectRoomController?.delegatee = self  // на AddRegistrationTVC
+        selectRoomController?.currentlySelectedRoomType = roomType
+        return selectRoomController
+    }
+    
+    
     
     func updateDateViews() {
         checkOutDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: checkInDatePicker.date)  // минимальный шаг в 1 день от даты въезда
@@ -89,6 +103,21 @@ class AddRegistrationTVC: UITableViewController {
         numberAdultsLabel.text = "\(Int(numberAdultsStepper.value))"
         numberChildrenLabel.text = "\(Int(numberChildrenStepper.value))"
     }
+    
+    func updateRooms() {
+        if let roomType = roomType {
+            roomTypeLabel.text = roomType.shortName
+        } else {
+            roomTypeLabel.text = "Not set"
+        }
+    }
+    
+    func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTVC, didSelect roomType: RoomType) { 
+        // метод протокола требуется имплементировать
+        self.roomType = roomType
+        updateRooms()
+    }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
