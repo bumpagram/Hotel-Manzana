@@ -304,6 +304,53 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="6Rt-qQ-IBa" userLabel="BinaryInput">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jq5-Q1-5T7" userLabel="Wi-Fi">
+                                        <rect key="frame" x="0.0" y="903.66666793823242" width="430" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jq5-Q1-5T7" id="4ql-KB-DT7">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wi-Fi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZC6-Sb-rLE">
+                                                    <rect key="frame" x="19.999999999999996" y="11" width="40.666666666666657" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="F6Y-gM-34h"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UDs-Y9-BoY">
+                                                    <rect key="frame" x="361" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="wifiSwitchChanged:" destination="iYQ-kw-3BM" eventType="valueChanged" id="VTJ-kH-tZK"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2 per day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a14-sG-1Qc">
+                                                    <rect key="frame" x="259.33333333333331" y="11" width="81.666666666666686" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="WRx-Ex-lx3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="UDs-Y9-BoY" secondAttribute="trailing" constant="20" id="Ej8-Pm-DC5"/>
+                                                <constraint firstItem="a14-sG-1Qc" firstAttribute="top" secondItem="4ql-KB-DT7" secondAttribute="top" constant="11" id="I9C-jh-SFy"/>
+                                                <constraint firstItem="ZC6-Sb-rLE" firstAttribute="top" secondItem="4ql-KB-DT7" secondAttribute="top" constant="11" id="YP5-Zk-IxA"/>
+                                                <constraint firstItem="UDs-Y9-BoY" firstAttribute="top" secondItem="4ql-KB-DT7" secondAttribute="top" constant="6" id="bX6-KC-7xB"/>
+                                                <constraint firstItem="UDs-Y9-BoY" firstAttribute="leading" secondItem="a14-sG-1Qc" secondAttribute="trailing" constant="20" id="ht4-fZ-hza"/>
+                                                <constraint firstItem="ZC6-Sb-rLE" firstAttribute="leading" secondItem="4ql-KB-DT7" secondAttribute="leadingMargin" id="nOg-Ek-dff"/>
+                                                <constraint firstItem="a14-sG-1Qc" firstAttribute="leading" secondItem="ZC6-Sb-rLE" secondAttribute="trailing" priority="250" constant="198.66999999999999" id="rEt-eF-rlZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="iYQ-kw-3BM" id="z1O-WQ-Ehd"/>
@@ -329,6 +376,7 @@
                         <outlet property="numberAdultsStepper" destination="EnS-Xy-yKU" id="tY2-Aj-r9I"/>
                         <outlet property="numberChildrenLabel" destination="76t-rN-31l" id="R8S-IM-jGe"/>
                         <outlet property="numberChildrenStepper" destination="CFY-04-VYr" id="lRr-E4-2Hf"/>
+                        <outlet property="wifiSwitch" destination="UDs-Y9-BoY" id="7vO-36-1vO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYC-pP-Mcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

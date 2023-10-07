@@ -17,6 +17,7 @@ class AddRegistrationTVC: UITableViewController {
     @IBOutlet var numberAdultsStepper: UIStepper!
     @IBOutlet var numberChildrenLabel: UILabel!
     @IBOutlet var numberChildrenStepper: UIStepper!
+    @IBOutlet var wifiSwitch: UISwitch!
     
     
     let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
@@ -57,6 +58,7 @@ class AddRegistrationTVC: UITableViewController {
         print(checkOutDatePicker.date)
         print(Int(numberAdultsStepper.value))
         print(Int(numberChildrenStepper.value))
+        print(wifiSwitch.isOn)
     }
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
@@ -71,6 +73,9 @@ class AddRegistrationTVC: UITableViewController {
     }
     @IBAction func steppersValueChanged(_ sender: UIStepper) {
         updateNumbers()
+    }
+    @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        // implement чуть позже
     }
     
     
