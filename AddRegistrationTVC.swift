@@ -19,6 +19,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
     @IBOutlet var numberChildrenStepper: UIStepper!
     @IBOutlet var wifiSwitch: UISwitch!
     @IBOutlet var roomTypeLabel: UILabel!
+    @IBOutlet var doneButton: UIBarButtonItem!
     
     
     let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
@@ -26,6 +27,13 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
     let checkinLabelCellIndexPath = IndexPath(row: 0, section: 1)  // а мы тыкаем на лейбл-заголовок ячейкой выше
     let checkOutLabelCellIndexPath = IndexPath(row: 2, section: 1)  // аналогично
 
+    
+    var roomType: RoomType? {  // property to hold selected room type in another window
+        didSet { // наблюдатель
+            print("room has been setted")
+            checkUserInputStatus()
+        }
+    }
 
     var isCheckinDatePickerVisible: Bool = false {
         didSet {
@@ -39,7 +47,18 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         }
     }
     
-    var roomType: RoomType?  // property to hold selected room type in another window
+    var registration: Registration? {   // исчисляемое свойство создает экземпляр бронирования
+        guard let roomType = roomType else {return nil}
+        let newFirstName = firstNameField.text ?? ""
+        let newLastName = lastNameField.text ?? ""
+        let newEmail = emailField.text ?? ""
+        let newCheckin = checkInDatePicker.date
+        let newCheckout = checkOutDatePicker.date
+        let adults = Int(numberAdultsStepper.value)
+        let children = Int(numberChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
+        return Registration(firstName: newFirstName, lastName: newLastName, emailAddress: newEmail, checkInDate: newCheckin, checkOutDate: newCheckout, numberOfAdults: adults, numberOfChildren: children, wifi: hasWifi, roomType: roomType)
+    }
     
     
     override func viewDidLoad() {
@@ -50,22 +69,9 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         updateDateViews()
         updateNumbers()
         updateRooms()
+        checkUserInputStatus()
     }
     
-    
-    @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        print("DONE PRESSED")
-        print(firstNameField.text ?? "")
-        print(lastNameField.text ?? "")
-        print(emailField.text ?? "")
-        print(checkInDatePicker.date)
-        print(checkOutDatePicker.date)
-        print(Int(numberAdultsStepper.value))
-        print(Int(numberChildrenStepper.value))
-        print(wifiSwitch.isOn)
-        let roomChoice = roomType?.name ?? "Not set"
-        print(roomChoice)
-    }
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
         // странно, не работает
@@ -73,16 +79,26 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
     }
-    
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
     }
     @IBAction func steppersValueChanged(_ sender: UIStepper) {
         updateNumbers()
+        checkUserInputStatus()
     }
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        checkUserInputStatus()
         // implement чуть позже
     }
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+
+    @IBAction func userTappedAnyButton(_ sender: UITextField) { 
+        // экшен на проверку корректности текстового ввода переадресует в функцию с логикой
+        checkUserInputStatus()
+    }
+    
     
     @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTVC? {
         let selectRoomController = SelectRoomTypeTVC(coder: coder)  // инициализируем ViewController и кладем его в константу
@@ -90,7 +106,6 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         selectRoomController?.currentlySelectedRoomType = roomType
         return selectRoomController
     }
-    
     
     
     func updateDateViews() {
@@ -117,6 +132,17 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         self.roomType = roomType
         updateRooms()
     }
+    
+    func checkUserInputStatus() {
+        doneButton.isEnabled = false // по умолчанию кнопка Done выключена пока не заполнены правильно все поля
+        
+        guard let _ = firstNameField.text, let _ = lastNameField.text, let _ = emailField.text else {return} //проверка на нил, не выделяем память на константы
+        guard firstNameField.text != "", lastNameField.text != "", emailField.text != "" else {return}
+        guard numberAdultsLabel.text != "0" else {return}
+        guard roomType != nil else {return}
+        doneButton.isEnabled = true
+    }
+    
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -156,9 +182,4 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         tableView.endUpdates()
     }
     
-
-   
-    
-    
-
 } // UITableViewController end

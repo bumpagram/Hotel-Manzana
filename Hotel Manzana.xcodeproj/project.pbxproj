@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A3391782AD1C11800D049DD /* SelectRoomTypeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */; };
+		5A33917A2AD206AE00D049DD /* RegistrationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */; };
 		5AB3D3982ACD911A0015B96E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3972ACD911A0015B96E /* AppDelegate.swift */; };
 		5AB3D39A2ACD911A0015B96E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3992ACD911A0015B96E /* SceneDelegate.swift */; };
 		5AB3D39F2ACD911A0015B96E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3D39D2ACD911A0015B96E /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTVC.swift; sourceTree = "<group>"; };
+		5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationsTableViewController.swift; sourceTree = "<group>"; };
 		5AB3D3942ACD911A0015B96E /* Hotel Manzana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hotel Manzana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB3D3972ACD911A0015B96E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AB3D3992ACD911A0015B96E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 		5AB3D38B2ACD911A0015B96E = {
 			isa = PBXGroup;
 			children = (
+				5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */,
 				5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */,
 				5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */,
 				5AB3D3AB2ACD9ED50015B96E /* Model.swift */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A33917A2AD206AE00D049DD /* RegistrationsTableViewController.swift in Sources */,
 				5AB3D3AE2ACDAF450015B96E /* AddRegistrationTVC.swift in Sources */,
 				5A3391782AD1C11800D049DD /* SelectRoomTypeTVC.swift in Sources */,
 				5AB3D3AC2ACD9ED50015B96E /* Model.swift in Sources */,
