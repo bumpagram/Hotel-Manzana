@@ -4,7 +4,7 @@
 //
 import UIKit
 
-class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
+class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITextFieldDelegate {
     
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
@@ -28,12 +28,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
     let checkOutLabelCellIndexPath = IndexPath(row: 2, section: 1)  // аналогично
 
     
-    var roomType: RoomType? {  // property to hold selected room type in another window
-        didSet { // наблюдатель
-            print("room has been setted")
-            checkUserInputStatus()
-        }
-    }
+    var roomType: RoomType?  // property to hold selected room type in another window
 
     var isCheckinDatePickerVisible: Bool = false {
         didSet {
@@ -63,6 +58,10 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.firstNameField.delegate = self // чтобы переключаться между полями
+        self.lastNameField.delegate = self
+        self.emailField.delegate = self
+        
         let today = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = today
         checkInDatePicker.date = today
@@ -75,9 +74,9 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
         // странно, не работает
-        firstNameField.resignFirstResponder()
-        lastNameField.resignFirstResponder()
-        emailField.resignFirstResponder()
+//        self.firstNameField.resignFirstResponder()
+//        self.lastNameField.resignFirstResponder()
+//        self.emailField.resignFirstResponder()
     }
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
@@ -87,17 +86,20 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         checkUserInputStatus()
     }
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
-        checkUserInputStatus()
         // implement чуть позже
     }
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
-
     @IBAction func userTappedAnyButton(_ sender: UITextField) { 
         // экшен на проверку корректности текстового ввода переадресует в функцию с логикой
         checkUserInputStatus()
     }
+    @IBAction func unwindToAddRegistration(segue: UIStoryboardSegue) {
+        // Подключен,но xcode кружок не закрасил
+        checkUserInputStatus()
+    }
+    
     
     
     @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTVC? {
@@ -138,11 +140,21 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         
         guard let _ = firstNameField.text, let _ = lastNameField.text, let _ = emailField.text else {return} //проверка на нил, не выделяем память на константы
         guard firstNameField.text != "", lastNameField.text != "", emailField.text != "" else {return}
+        guard !emailField.text!.contains(" "), emailField.text!.contains("@") else {return} // без пробелов емейле, но содержит собаку
         guard numberAdultsLabel.text != "0" else {return}
         guard roomType != nil else {return}
         doneButton.isEnabled = true
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { 
+        // метод делегейта, при нажатии энтер в текстовом поле перейти к следующему полю или убрать клаву
+        switch textField {
+        case self.firstNameField : self.lastNameField.becomeFirstResponder()
+        case self.lastNameField : self.emailField.becomeFirstResponder()
+        default : self.emailField.resignFirstResponder()
+        }
+        return true
+    }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -177,7 +189,10 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate {
         } else {
             return
         }
-        
+        print("cell tapped")
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
         tableView.beginUpdates()
         tableView.endUpdates()
     }

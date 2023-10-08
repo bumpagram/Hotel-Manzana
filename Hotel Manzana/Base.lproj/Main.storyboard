@@ -76,10 +76,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="56.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XYV-ol-Olw">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XYV-ol-Olw">
                                                     <rect key="frame" x="20" y="11" width="390" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <action selector="userTappedAnyButton:" destination="iYQ-kw-3BM" eventType="editingChanged" id="He4-lI-A35"/>
                                                     </connections>
@@ -100,10 +100,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="56.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5i3-J9-PVt">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5i3-J9-PVt">
                                                     <rect key="frame" x="20" y="11" width="390" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <action selector="userTappedAnyButton:" destination="iYQ-kw-3BM" eventType="editingChanged" id="7ce-R2-Rej"/>
                                                     </connections>
@@ -124,10 +124,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="56.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-Yy-6ok">
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-Yy-6ok">
                                                     <rect key="frame" x="20" y="11" width="390" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <action selector="userTappedAnyButton:" destination="iYQ-kw-3BM" eventType="editingChanged" id="sEH-Fi-yjd"/>
                                                     </connections>
@@ -438,7 +438,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="4Bj-iI-mNg" kind="show" destinationCreationSelector="selectRoomType:" id="VVB-WC-ma1"/>
+                                            <segue destination="4Bj-iI-mNg" kind="show" identifier="" destinationCreationSelector="selectRoomType:" id="VVB-WC-ma1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -528,8 +528,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vTA-i6-dDQ"/>
+                    <connections>
+                        <segue destination="uVl-AQ-uI5" kind="unwind" identifier="goToAddRegistration" unwindAction="unwindToAddRegistrationWithSegue:" id="Fhu-at-xK0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mus-f0-CkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="uVl-AQ-uI5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2057" y="-41"/>
         </scene>

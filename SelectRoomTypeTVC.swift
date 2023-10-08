@@ -52,8 +52,8 @@ class SelectRoomTypeTVC: UITableViewController {
         let tappedCell = RoomType.all[indexPath.row]
         currentlySelectedRoomType = tappedCell
         delegatee?.selectRoomTypeTableViewController(self, didSelect: tappedCell)  //референс в проперти, из него в протокол, из протокола в метод
-        
         tableView.reloadData()
+        performSegue(withIdentifier: "goToAddRegistration", sender: self)
     }
 
 
