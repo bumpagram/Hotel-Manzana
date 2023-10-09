@@ -41,7 +41,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     var totalCheckoutForGuest : Int {  totalWifiCost + totalRoomsCost   }
     
     var roomType: RoomType?  // property to hold selected room type in another window
-
+    
     var isCheckinDatePickerVisible: Bool = false {
         didSet {
             checkInDatePicker.isHidden = !isCheckinDatePickerVisible  // toggle переворот в случае изменения значения
@@ -70,25 +70,27 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.firstNameField.delegate = self // чтобы переключаться между полями
-        self.lastNameField.delegate = self
-        self.emailField.delegate = self
         
-        let today = Calendar.current.startOfDay(for: Date())
-        checkInDatePicker.minimumDate = today
-        checkInDatePicker.date = today
-        updateDateViews()
-        updateNumbers()
-        updateRooms()
-        checkUserInputStatus()
-        updateCharges()
+        if AddRegistrationTVC.fromTappedCellToDetails == false {
+            self.firstNameField.delegate = self // чтобы переключаться между полями
+            self.lastNameField.delegate = self
+            self.emailField.delegate = self
+            
+            let today = Calendar.current.startOfDay(for: Date())
+            checkInDatePicker.minimumDate = today
+            checkInDatePicker.date = today
+            updateDateViews()
+            updateNumbers()
+            updateRooms()
+            checkUserInputStatus()
+            updateCharges()
+        } else {
+            presentAsDetails()
+        }
+        
     }
     
     
-    @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
-        // странно, не работает
-      resignTextFields()
-    }
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
         updateCharges()
@@ -180,5 +182,8 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+        
+    
     
 } // UITableViewController end

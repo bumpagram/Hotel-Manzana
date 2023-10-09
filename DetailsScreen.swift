@@ -10,7 +10,9 @@ import Foundation
 
 extension AddRegistrationTVC {
     
-    func doDetailsNavigation() {
+    static var fromTappedCellToDetails: Bool = false  // флаг для контроля прихода сигвея
+    
+    func presentAsDetails() {
         print("got details func event")
         
         doneButton.isHidden = true
@@ -18,18 +20,17 @@ extension AddRegistrationTVC {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.title = "Registration Details"
-        self.navigationItem.style = .navigator
+        self.navigationItem.style = .editor
+        //self.navigationItem.leftBarButtonItem =
+        
         
     }
     
     
     
+
     
     
 }  // Extension end
 
-
-
-let extensions = AddRegistrationTVC()
-//       extensions.doDetailsNavigation()
 

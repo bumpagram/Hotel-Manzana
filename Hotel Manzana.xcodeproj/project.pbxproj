@@ -23,6 +23,7 @@
 /* Begin PBXFileReference section */
 		5A1C2C8D2AD472360016ED2E /* AddRegistrationUIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationUIMethods.swift; sourceTree = "<group>"; };
 		5A1C2C8F2AD484F70016ED2E /* DetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreen.swift; sourceTree = "<group>"; };
+		5A1C2C912AD4AFE80016ED2E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTVC.swift; sourceTree = "<group>"; };
 		5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationsTableViewController.swift; sourceTree = "<group>"; };
 		5AB3D3942ACD911A0015B96E /* Hotel Manzana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hotel Manzana.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +79,7 @@
 				5AB3D3A02ACD911B0015B96E /* Assets.xcassets */,
 				5AB3D3A22ACD911B0015B96E /* LaunchScreen.storyboard */,
 				5AB3D3A52ACD911B0015B96E /* Info.plist */,
+				5A1C2C912AD4AFE80016ED2E /* README.md */,
 			);
 			path = "Hotel Manzana";
 			sourceTree = "<group>";
