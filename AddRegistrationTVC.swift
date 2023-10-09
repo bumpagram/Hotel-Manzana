@@ -20,13 +20,25 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     @IBOutlet var wifiSwitch: UISwitch!
     @IBOutlet var roomTypeLabel: UILabel!
     @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var selectedRoomsCell: UITableViewCell!
+    @IBOutlet var selectedWifiCell: UITableViewCell!
+    @IBOutlet var costWifi: UILabel!
+    @IBOutlet var costSelectedRoomLabel: UILabel!
+    @IBOutlet var detailsSelectedRoomLabel: UILabel!
+    @IBOutlet var numberSelectedNightsLabel: UILabel!
+    @IBOutlet var detailsSelectedNightsLabel: UILabel!
+    
+    @IBOutlet var totalCheckoutLabel: UILabel!
     
     
     let checkinDatePickerIndexPath = IndexPath(row: 1, section: 1)  // 1:1 это сам DatePicker
     let checkoutDatePickerIndexPath = IndexPath(row: 3, section: 1)
     let checkinLabelCellIndexPath = IndexPath(row: 0, section: 1)  // а мы тыкаем на лейбл-заголовок ячейкой выше
-    let checkOutLabelCellIndexPath = IndexPath(row: 2, section: 1)  // аналогично
+    let checkOutLabelCellIndexPath = IndexPath(row: 2, section: 1)
 
+    var totalWifiCost = 0
+    var totalRoomsCost = 0 // как буфер для расчетов
+    var totalCheckoutForGuest : Int {  totalWifiCost + totalRoomsCost   }
     
     var roomType: RoomType?  // property to hold selected room type in another window
 
@@ -69,6 +81,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         updateNumbers()
         updateRooms()
         checkUserInputStatus()
+        updateCharges()
     }
     
     
@@ -80,6 +93,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     }
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
+        updateCharges()
     }
     @IBAction func steppersValueChanged(_ sender: UIStepper) {
         updateNumbers()
@@ -87,6 +101,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     }
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
         // implement чуть позже
+        updateCharges()
     }
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
@@ -99,9 +114,6 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         // Подключен,но xcode кружок не закрасил
         checkUserInputStatus()
     }
-    
-    
-    
     @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTVC? {
         let selectRoomController = SelectRoomTypeTVC(coder: coder)  // инициализируем ViewController и кладем его в константу
         selectRoomController?.delegatee = self  // на AddRegistrationTVC
@@ -123,16 +135,46 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     
     func updateRooms() {
         if let roomType = roomType {
-            roomTypeLabel.text = roomType.shortName
+            roomTypeLabel.text = roomType.name
         } else {
             roomTypeLabel.text = "Not set"
         }
     }
     
+    func updateCharges() {   // видимость ячеек счета и их логика
+     
+        let daysInHotel = Calendar.current.dateComponents([.day], from: checkInDatePicker.date, to: checkOutDatePicker.date).day!    // force unwrap тк в пикерах прописана логика и всегда будет минимум 1 день разницы
+        numberSelectedNightsLabel.text = String(daysInHotel)
+        detailsSelectedNightsLabel.text = checkInDateLabel.text! + " - " + checkOutDateLabel.text!
+        
+        if wifiSwitch.isOn {
+         selectedWifiCell.isHidden = false
+            totalWifiCost = daysInHotel * 10
+            costWifi.text = "$ " + String(totalWifiCost)
+        } else {
+            selectedWifiCell.isHidden = true
+            costWifi.text = "0"
+            totalWifiCost = 0
+        }
+        if roomType == nil {
+            selectedRoomsCell.isHidden = true
+            totalRoomsCost = 0
+        } else {
+            selectedRoomsCell.isHidden = false
+            totalRoomsCost = roomType!.price * daysInHotel
+            costSelectedRoomLabel.text = "$ \(totalRoomsCost)"
+            detailsSelectedRoomLabel.text = "\(roomType!.shortName) at $\(roomType!.price)/night"
+        }
+        
+        totalCheckoutLabel.text = "$ " + String(totalCheckoutForGuest)
+    }
+    
+    
     func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTVC, didSelect roomType: RoomType) { 
         // метод протокола требуется имплементировать
         self.roomType = roomType
         updateRooms()
+        updateCharges()
     }
     
     func checkUserInputStatus() {
