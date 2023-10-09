@@ -28,6 +28,12 @@ class RegistrationsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    @IBSegueAction func showDetailsSegue(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> AddRegistrationTVC? {
+        print("ping segue")
+        return AddRegistrationTVC(coder: coder)
+    }
+    
+    
     
     // MARK: - Table view data source
 
