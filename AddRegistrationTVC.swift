@@ -87,23 +87,24 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     
     @IBAction func keyboardHide(_ sender: UITapGestureRecognizer) {
         // странно, не работает
-//        self.firstNameField.resignFirstResponder()
-//        self.lastNameField.resignFirstResponder()
-//        self.emailField.resignFirstResponder()
+      resignTextFields()
     }
     @IBAction func datePickerValueChanged(_ sender: Any) {
         updateDateViews()
         updateCharges()
+        resignTextFields()
     }
     @IBAction func steppersValueChanged(_ sender: UIStepper) {
         updateNumbers()
         checkUserInputStatus()
+        resignTextFields()
     }
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
-        // implement чуть позже
         updateCharges()
+        resignTextFields()
     }
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        resignTextFields()
         dismiss(animated: true)
     }
     @IBAction func userTappedAnyButton(_ sender: UITextField) { 
@@ -113,6 +114,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     @IBAction func unwindToAddRegistration(segue: UIStoryboardSegue) {
         // Подключен,но xcode кружок не закрасил
         checkUserInputStatus()
+        resignTextFields()
     }
     @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTVC? {
         let selectRoomController = SelectRoomTypeTVC(coder: coder)  // инициализируем ViewController и кладем его в константу
@@ -175,6 +177,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         self.roomType = roomType
         updateRooms()
         updateCharges()
+        resignTextFields()
     }
     
     func checkUserInputStatus() {
@@ -186,6 +189,12 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         guard numberAdultsLabel.text != "0" else {return}
         guard roomType != nil else {return}
         doneButton.isEnabled = true
+    }
+    
+    func resignTextFields() {
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        emailField.resignFirstResponder()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { 
@@ -231,9 +240,7 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         } else {
             return
         }
-        firstNameField.resignFirstResponder()
-        lastNameField.resignFirstResponder()
-        emailField.resignFirstResponder()
+        resignTextFields()
         tableView.beginUpdates()
         tableView.endUpdates()
     }
