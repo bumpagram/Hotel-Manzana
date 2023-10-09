@@ -189,7 +189,6 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         } else {
             return
         }
-        print("cell tapped")
         firstNameField.resignFirstResponder()
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
