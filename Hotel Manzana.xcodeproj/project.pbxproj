@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5A1C2C8E2AD472360016ED2E /* AddRegistrationUIMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C2C8D2AD472360016ED2E /* AddRegistrationUIMethods.swift */; };
-		5A1C2C902AD484F70016ED2E /* DetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C2C8F2AD484F70016ED2E /* DetailsScreen.swift */; };
 		5A3391782AD1C11800D049DD /* SelectRoomTypeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */; };
 		5A33917A2AD206AE00D049DD /* RegistrationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */; };
 		5AB3D3982ACD911A0015B96E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3972ACD911A0015B96E /* AppDelegate.swift */; };
@@ -18,11 +17,11 @@
 		5AB3D3A42ACD911B0015B96E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB3D3A22ACD911B0015B96E /* LaunchScreen.storyboard */; };
 		5AB3D3AC2ACD9ED50015B96E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3AB2ACD9ED50015B96E /* Model.swift */; };
 		5AB3D3AE2ACDAF450015B96E /* AddRegistrationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */; };
+		5ABF8A302AD6BB7300643F24 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF8A2F2AD6BB7300643F24 /* DetailsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5A1C2C8D2AD472360016ED2E /* AddRegistrationUIMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationUIMethods.swift; sourceTree = "<group>"; };
-		5A1C2C8F2AD484F70016ED2E /* DetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreen.swift; sourceTree = "<group>"; };
 		5A1C2C912AD4AFE80016ED2E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTVC.swift; sourceTree = "<group>"; };
 		5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationsTableViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		5AB3D3A52ACD911B0015B96E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AB3D3AB2ACD9ED50015B96E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AB3D3AD2ACDAF450015B96E /* AddRegistrationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTVC.swift; sourceTree = "<group>"; };
+		5ABF8A2F2AD6BB7300643F24 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 		5AB3D38B2ACD911A0015B96E = {
 			isa = PBXGroup;
 			children = (
-				5A1C2C8F2AD484F70016ED2E /* DetailsScreen.swift */,
+				5ABF8A2F2AD6BB7300643F24 /* DetailsTableViewController.swift */,
 				5A1C2C8D2AD472360016ED2E /* AddRegistrationUIMethods.swift */,
 				5A3391792AD206AE00D049DD /* RegistrationsTableViewController.swift */,
 				5A3391772AD1C11800D049DD /* SelectRoomTypeTVC.swift */,
@@ -155,11 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ABF8A302AD6BB7300643F24 /* DetailsTableViewController.swift in Sources */,
 				5A33917A2AD206AE00D049DD /* RegistrationsTableViewController.swift in Sources */,
 				5AB3D3AE2ACDAF450015B96E /* AddRegistrationTVC.swift in Sources */,
 				5A3391782AD1C11800D049DD /* SelectRoomTypeTVC.swift in Sources */,
 				5AB3D3AC2ACD9ED50015B96E /* Model.swift in Sources */,
-				5A1C2C902AD484F70016ED2E /* DetailsScreen.swift in Sources */,
 				5AB3D3982ACD911A0015B96E /* AppDelegate.swift in Sources */,
 				5AB3D39A2ACD911A0015B96E /* SceneDelegate.swift in Sources */,
 				5A1C2C8E2AD472360016ED2E /* AddRegistrationUIMethods.swift in Sources */,

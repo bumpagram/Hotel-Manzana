@@ -108,9 +108,9 @@ class RegistrationsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "showDetails" {
-            print("YEEEAAAHH")
+            print("???")  //   ЛЕГАСИ после удаления костяля. оставлю пока что
             print(segue.destination)
-            AddRegistrationTVC.fromTappedCellToDetails = true
+           
         }
     }
     

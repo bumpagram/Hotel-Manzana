@@ -70,8 +70,6 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if AddRegistrationTVC.fromTappedCellToDetails == false {
             self.firstNameField.delegate = self // чтобы переключаться между полями
             self.lastNameField.delegate = self
             self.emailField.delegate = self
@@ -84,10 +82,6 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
             updateRooms()
             checkUserInputStatus()
             updateCharges()
-        } else {
-            presentAsDetails()
-        }
-        
     }
     
     
