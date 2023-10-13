@@ -7,7 +7,7 @@ import UIKit
 class RegistrationsTableViewController: UITableViewController {
     
     var allRegistrations = [Registration]()
-
+    var selectedElement: Registration?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +19,13 @@ class RegistrationsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     
     @IBAction func unwindCustomFromAddRegistration(onsegue: UIStoryboardSegue) {  // Подключен,но xcode кружок не закрасил
         guard let addRegistrationTVC = onsegue.source as? AddRegistrationTVC,
               let registration = addRegistrationTVC.registration else {return}
         allRegistrations.append(registration)
         tableView.reloadData()
-    }
-    
-    @IBSegueAction func showDetailsSegue(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> AddRegistrationTVC? {
-        return AddRegistrationTVC(coder: coder)
     }
     
     
@@ -44,7 +40,6 @@ class RegistrationsTableViewController: UITableViewController {
         return allRegistrations.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "RegistrationCell", for: indexPath)
@@ -56,9 +51,19 @@ class RegistrationsTableViewController: UITableViewController {
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt")
         tableView.deselectRow(at: indexPath, animated: true)
-        // тут надо будет дописать логику под переход в экран детали, если будет
+        //ниже логика под переход в экран детали (без delegate)
+
+        let tappedCell = allRegistrations[indexPath.row]
+        selectedElement = tappedCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailsVC = storyboard.instantiateViewController(withIdentifier: "detailsVC") as? DetailsTableViewController {
+            detailsVC.elementToShow = selectedElement
+            show(detailsVC, sender: nil)
+        }
     }
     
     
@@ -101,18 +106,14 @@ class RegistrationsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showDetails" {
-            print("???")  //   ЛЕГАСИ после удаления костяля. оставлю пока что
-            print(segue.destination)
            
         }
     }
-    
+    */
 
 }

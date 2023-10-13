@@ -68,9 +68,3 @@ class SelectRoomTypeTVC: UITableViewController {
     */
 } // TableViewController end
 
-
-
-protocol SelectRoomTypeTVCDelegate : AnyObject {
-    func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTVC, didSelect roomType: RoomType)
-    // кастомный протокол и метод тоже
-}

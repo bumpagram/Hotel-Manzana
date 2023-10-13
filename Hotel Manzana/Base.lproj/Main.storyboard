@@ -39,9 +39,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="8ld-tr-m6c" kind="show" id="4hQ-M1-MHs"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -273,7 +270,7 @@
                             <tableViewSection id="lxY-I6-XMX" userLabel="Numbers">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QKF-qo-VEX" userLabel="Adults">
-                                        <rect key="frame" x="0.0" y="780.33333206176769" width="430" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="780.33333206176758" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QKF-qo-VEX" id="c7L-Y1-JKI">
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
@@ -320,7 +317,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1fM-6a-1is" userLabel="Children">
-                                        <rect key="frame" x="0.0" y="824.00000000000011" width="430" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="824" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1fM-6a-1is" id="h4v-ji-oyE">
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
@@ -371,7 +368,7 @@
                             <tableViewSection id="6Rt-qQ-IBa" userLabel="BinaryInput">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jq5-Q1-5T7" userLabel="Wi-Fi">
-                                        <rect key="frame" x="0.0" y="903.66666793823254" width="430" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="903.66666793823242" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jq5-Q1-5T7" id="4ql-KB-DT7">
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="43.666667938232422"/>
@@ -418,7 +415,7 @@
                             <tableViewSection id="trQ-D7-D3H" userLabel="RoomSelect">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qzW-Ul-Fhe" detailTextLabel="2Zr-eB-8Jw" style="IBUITableViewCellStyleValue1" id="2LQ-HW-EpC">
-                                        <rect key="frame" x="0.0" y="983.33333587646496" width="430" height="43.666667938232308"/>
+                                        <rect key="frame" x="0.0" y="983.33333587646484" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2LQ-HW-EpC" id="nMS-xs-4UD">
                                             <rect key="frame" x="0.0" y="0.0" width="399.66666666666669" height="43.666667938232422"/>
@@ -751,7 +748,7 @@
         <!--Details-->
         <scene sceneID="XqJ-C1-jB2">
             <objects>
-                <tableViewController id="8ld-tr-m6c" userLabel="Details" customClass="DetailsTableViewController" customModule="Hotel_Manzana" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="detailsVC" id="8ld-tr-m6c" userLabel="Details" customClass="DetailsTableViewController" customModule="Hotel_Manzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="dfk-3b-HHT">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -759,7 +756,7 @@
                         <sections>
                             <tableViewSection headerTitle="Guest First Name, Last Name, Email" id="PKA-JC-a5l" userLabel="TextFields">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fEw-ZO-52b">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fEw-ZO-52b">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="430" height="56.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fEw-ZO-52b" id="Czh-oG-sGf">
@@ -780,7 +777,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OUY-4y-oSS">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OUY-4y-oSS">
                                         <rect key="frame" x="0.0" y="111.66666412353516" width="430" height="56.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OUY-4y-oSS" id="DcA-zI-mvN">
@@ -801,7 +798,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6B5-S0-WEa">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6B5-S0-WEa">
                                         <rect key="frame" x="0.0" y="167.99999618530273" width="430" height="56.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6B5-S0-WEa" id="wdu-CO-HFY">
@@ -826,7 +823,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Arriving at Hotel" id="UZO-tl-89b" userLabel="DatePickers">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iY2-4d-4CG" userLabel="Checkin">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iY2-4d-4CG" userLabel="Checkin">
                                         <rect key="frame" x="0.0" y="280.33332633972168" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iY2-4d-4CG" id="mcE-cU-WiU">
@@ -861,7 +858,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bwM-8o-RmP" userLabel="Checkout">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bwM-8o-RmP" userLabel="Checkout">
                                         <rect key="frame" x="0.0" y="323.9999942779541" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bwM-8o-RmP" id="Uqj-Gp-H46">
@@ -902,7 +899,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Amount of People" id="WBy-Tb-xc8" userLabel="Numbers">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="71c-dm-0c8" userLabel="Adults">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="71c-dm-0c8" userLabel="Adults">
                                         <rect key="frame" x="0.0" y="423.66666221618652" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="71c-dm-0c8" id="XjM-nP-F1N">
@@ -937,7 +934,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OyB-P4-ILW" userLabel="Children">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OyB-P4-ILW" userLabel="Children">
                                         <rect key="frame" x="0.0" y="467.33333015441895" width="430" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OyB-P4-ILW" id="lZB-Bv-mK4">
@@ -1027,8 +1024,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="47.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-AE-kqb">
-                                                    <rect key="frame" x="20" y="11" width="85.666666666666671" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-AE-kqb">
+                                                    <rect key="frame" x="20.000000000000007" y="11" width="115.66666666666669" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3Cg-V5-MFg"/>
                                                     </constraints>
@@ -1153,6 +1150,7 @@
                         <outlet property="checkoutDateLabel" destination="I9U-wf-l1V" id="NWt-Pm-naS"/>
                         <outlet property="costSelectedRoomLabel" destination="7Ht-4t-GJI" id="enU-mT-bJs"/>
                         <outlet property="costWifiLabel" destination="WcK-4i-fa1" id="Qg5-rN-isH"/>
+                        <outlet property="detailNightsLabel" destination="dcw-bu-88o" id="b1n-6N-bb5"/>
                         <outlet property="detailsSelectedRoomLabel" destination="0Yn-zZ-QfS" id="Iw0-Gj-mSh"/>
                         <outlet property="detailsWifiLabel" destination="pja-Aj-8Wa" id="Afg-pe-wqL"/>
                         <outlet property="emailField" destination="1dI-Mi-MJq" id="RkQ-XH-d9v"/>
@@ -1160,6 +1158,7 @@
                         <outlet property="lastNameField" destination="apb-L5-uCb" id="cHY-3Z-hPO"/>
                         <outlet property="numberAdultsLabel" destination="865-wh-rk6" id="gYb-bq-hI5"/>
                         <outlet property="numberChildrenLabel" destination="pit-5g-Ot3" id="izE-1S-VZw"/>
+                        <outlet property="numberNightsLabel" destination="Y5F-Wm-nuX" id="PAy-Fh-BeD"/>
                         <outlet property="totalCheckoutLabel" destination="HWy-S4-jqO" id="HSk-Zk-SW6"/>
                     </connections>
                 </tableViewController>

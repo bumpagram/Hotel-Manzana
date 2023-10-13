@@ -16,6 +16,7 @@ struct Registration {
 
     var wifi: Bool
     var roomType: RoomType
+    var totalCheckout: Int
 }
 
 
@@ -42,3 +43,7 @@ struct RoomType: Equatable {
 }
 
 
+protocol SelectRoomTypeTVCDelegate : AnyObject {
+    func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTVC, didSelect roomType: RoomType)
+    // кастомный протокол и метод тоже
+}

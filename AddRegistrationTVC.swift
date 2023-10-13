@@ -64,7 +64,8 @@ class AddRegistrationTVC: UITableViewController, SelectRoomTypeTVCDelegate, UITe
         let adults = Int(numberAdultsStepper.value)
         let children = Int(numberChildrenStepper.value)
         let hasWifi = wifiSwitch.isOn
-        return Registration(firstName: newFirstName, lastName: newLastName, emailAddress: newEmail, checkInDate: newCheckin, checkOutDate: newCheckout, numberOfAdults: adults, numberOfChildren: children, wifi: hasWifi, roomType: roomType)
+        let total = totalCheckoutForGuest
+        return Registration(firstName: newFirstName, lastName: newLastName, emailAddress: newEmail, checkInDate: newCheckin, checkOutDate: newCheckout, numberOfAdults: adults, numberOfChildren: children, wifi: hasWifi, roomType: roomType, totalCheckout: total)
     }
     
     
